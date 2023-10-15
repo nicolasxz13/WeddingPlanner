@@ -1,0 +1,59 @@
+@using WeddingPlanner.Models
+@model List<WeddingViewModel>
+@await Html.PartialAsync("_Nav")
+
+@{
+    string name = @Context.Session.GetString("UserName") ?? "";
+}
+<table>
+    <thead>
+        <tr>
+            <th>
+                Wedding of
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Guest Count
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (WeddingViewModel result in @Model)
+        {
+            <tr>
+                <td><a asp-action="Show" asp-controller="Wedding" asp-route-id="@result.Id">@result.Married</a></td>
+                <td>@result.Date?.ToString("MMM d, yyyy")</td>
+                <td>@result.GuestCount</td>
+                @if (result.Creator)
+                {
+                    <td>
+                        <form asp-action="Delete" asp-controller="Wedding" asp-route-id="@result.Id">
+                            <button>Delete</button>
+                        </form>
+                    </td>
+                }
+                else if (result.Asist)
+                {
+                    <td>
+                        <form asp-action="Rsvp" asp-controller="Wedding" asp-route-id="@result.Id">
+                            <button>Un-RSVP</button>
+                        </form>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <form asp-action="Rsvp" asp-controller="Wedding" asp-route-id="@result.Id">
+                            <button>RSVP</button>
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

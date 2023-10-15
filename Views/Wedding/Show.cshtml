@@ -1,0 +1,12 @@
+@using WeddingPlanner.Models
+@model Wedding
+@await Html.PartialAsync("_Nav")
+
+<h2>@Model.Wedder_One & @Model.Wedder_Two</h2>
+<p>Date: @Model.Date</p>
+<p>Guests:</p>
+<div class="listguest">
+    @foreach(var result in @Model.Rsvs){
+        <p>@result.User.Name @result.User.Last_Name</p>
+    }
+</div>

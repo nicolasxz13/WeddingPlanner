@@ -1,0 +1,37 @@
+@using WeddingPlanner.Models
+@model Wedding
+@await Html.PartialAsync("_Nav")
+<form asp-action="Create" asp-controller="Wedding" class="formWedding">
+    <p>Plan a Wedding</p>
+    <div class="blocks">
+        <label asp-for="Wedder_One"></label>
+        <input asp-for="Wedder_One">
+    </div>
+    <div class="blocks">
+        <span asp-validation-for="Wedder_One"></span>
+    </div>
+    <div class="blocks">
+        <label asp-for="Wedder_Two"></label>
+        <input asp-for="Wedder_Two">
+    </div>
+    <div class="blocks">
+        <span  asp-validation-for="Wedder_Two"></span>
+    </div>
+    <div class="blocks">
+        <label asp-for="Date"></label>
+        <input asp-for="Date">
+    </div>
+    <div class="blocks">
+        <span  asp-validation-for="Date"></span>
+    </div>
+    <div class="blocks">
+        <label asp-for="Address"></label>
+        <input asp-for="Address">
+    </div>
+    <div class="blocks">
+        <span  asp-validation-for="Address"></span>
+    </div>
+    <div class="blocks">
+        <button class="btn1">Create</button>
+    </div>
+</form>
